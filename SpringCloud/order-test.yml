@@ -1,0 +1,30 @@
+
+spring:
+  #数据源配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/mucloud?serverTimezone=CTT&useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    username: root
+    password: a821114664
+  jpa:
+    show-sql: true
+  #微服务名称配置
+  application:
+    name: order
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:50601/eureka/
+  instance:
+    prefer-ip-address: true  #将自己的ip地址注册到Eureka服务中
+    #具体的IP地址  应加密
+    ip-address: ${IP_ADDRESS:127.0.0.1}
+    # Eureka 页面展示信息
+    instance-id: ${spring.application.name}:${server.port}
+
+server:
+  port: 50606
+  
+env:
+  test
